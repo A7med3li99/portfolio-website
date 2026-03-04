@@ -752,13 +752,25 @@ if('IntersectionObserver' in window){
     max = max||15;
     document.querySelectorAll(selector).forEach(function(el){
       el.classList.add('tilt');
-      el.addEventListener('mousemove',function(e){
-        var r=el.getBoundingClientRect();
-        var x=(e.clientX - r.left)/r.width -0.5;
-        var y=(e.clientY - r.top)/r.height -0.5;
-        el.style.transform='perspective(600px) rotateX('+(-y*max)+'deg) rotateY('+(x*max)+'deg)';
+      var r, raf;
+      el.addEventListener('mouseenter',function(){
+        r = el.getBoundingClientRect();
       });
-      el.addEventListener('mouseleave',function(){ el.style.transform=''; });
+      el.addEventListener('mousemove',function(e){
+        if(!r) r = el.getBoundingClientRect();
+        var cx = e.clientX, cy = e.clientY;
+        if(raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(function(){
+          var x=(cx - r.left)/r.width -0.5;
+          var y=(cy - r.top)/r.height -0.5;
+          el.style.transform='perspective(600px) rotateX('+(-y*max)+'deg) rotateY('+(x*max)+'deg)';
+        });
+      });
+      el.addEventListener('mouseleave',function(){
+        if(raf) cancelAnimationFrame(raf);
+        el.style.transform='';
+        r = null;
+      });
     });
   }
   enableTilt('.pcard, .sk');
