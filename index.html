@@ -629,8 +629,17 @@ model = tf.keras.Sequential([
 <script>
 // hamburger
 var ham = document.getElementById('ham');
-if(ham){ ham.addEventListener('click',function(){ document.getElementById('navul').classList.toggle('open'); }); }
-document.querySelectorAll('#navul a').forEach(function(a){ a.addEventListener('click',function(){ document.getElementById('navul').classList.remove('open'); }); });
+if (ham) {
+  ham.addEventListener('click', function() {
+    document.getElementById('navul').classList.toggle('open');
+  });
+}
+
+document.querySelectorAll('#navul a').forEach(function(a) {
+  a.addEventListener('click', function() {
+    document.getElementById('navul').classList.remove('open');
+  });
+});
 
 // theme toggle (persist in localStorage)
 var themeToggle = document.getElementById('themeToggle');
@@ -645,14 +654,24 @@ function applyTheme(theme){
   try{ localStorage.setItem('site-theme', theme); }catch(e){}
 }
 // initialize theme
-(function(){
+(function() {
   var saved = null;
-  try{ saved = localStorage.getItem('site-theme'); }catch(e){}
-  if(saved) return applyTheme(saved);
+  try {
+    saved = localStorage.getItem('site-theme');
+  } catch (e) {}
+
+  if (saved) return applyTheme(saved);
+
   var prefers = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
   applyTheme(prefers);
 })();
-if(themeToggle){ themeToggle.addEventListener('click',function(){ var isLight = document.body.classList.contains('light'); applyTheme(isLight ? 'dark' : 'light'); }); }
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', function() {
+    var isLight = document.body.classList.contains('light');
+    applyTheme(isLight ? 'dark' : 'light');
+  });
+}
 
 // CV download fallback: if the file is missing, provide a generated text CV download
 var cvLink = document.getElementById('cvDownload');
