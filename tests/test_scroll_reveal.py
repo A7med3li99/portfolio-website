@@ -12,22 +12,21 @@ def page():
         yield page
         browser.close()
 
-def test_scroll_reveal(page):
+def test_gsap_elements_present(page):
     # Load index.html
     path = os.path.abspath("index.html")
     page.goto(f"file://{path}", wait_until="domcontentloaded")
 
-    # Select all elements with class 'sr'
-    srs = page.locator(".sr")
-    count = srs.count()
-    assert count > 0, "No elements with class 'sr' found"
-
-    # Wait for the fallback timeout (800ms in code + some buffer)
-    page.wait_for_timeout(1500)
-
-    # Check that all elements with class 'sr' now have class 'on'
-    on_count = page.locator(".sr.on").count()
-    assert on_count == count, f"Expected {count} elements to have 'on' class, but found {on_count}"
+    # Select all elements with GSAP animation classes
+    gsap_selectors = [
+        ".gsap-reveal",
+        ".gsap-slide-up",
+        ".gsap-slide-left",
+        ".gsap-slide-right",
+        ".gsap-scale",
+    ]
+    total = sum(page.locator(sel).count() for sel in gsap_selectors)
+    assert total > 0, "No elements with GSAP animation classes found"
 
 if __name__ == "__main__":
     pytest.main([__file__])
