@@ -1,0 +1,3 @@
+## 2024-03-06 - Accessible Keyboard Navigation with Custom Cursors
+**Learning:** Using `cursor: none` to implement custom cursor visual effects completely disables the browser's native cursor feedback mechanism. This makes keyboard navigation almost impossible for users relying on visual cues unless explicit and high-contrast `:focus-visible` styles are provided. In this app, relying on custom hover effects led to a severe lack of focus feedback during tab navigation.
+**Action:** Always implement a global `*:focus-visible` style (or explicit component-level focus states) specifically tied to the design system's high-contrast colors (e.g., `--cyan`) when custom cursors or extensive hover effects are in use.
