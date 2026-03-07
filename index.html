@@ -48,6 +48,15 @@ body{
 }
 
 /* ===========================
+   ACCESSIBILITY
+   =========================== */
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ===========================
    SKIP LINK
    =========================== */
 .skip-link{
@@ -654,7 +663,7 @@ nav.scrolled{padding:10px 48px;background:rgba(3,9,26,.97)}
 }
 
 /* ===========================
-   ABOUT (old grid - keep for sidebar sticky) 
+   ABOUT (old grid - keep for sidebar sticky)
    =========================== */
 .about-grid{display:grid;grid-template-columns:260px 1fr;gap:56px;align-items:start}
 .about-side{
