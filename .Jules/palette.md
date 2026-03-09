@@ -1,0 +1,3 @@
+## 2024-05-18 - Custom Cursor Accessibility
+**Learning:** Implementing a custom cursor with `cursor: none` on the `body` disables the browser's native cursor feedback and often hides the default focus indicator for interactive elements. This makes keyboard navigation almost impossible without explicit visual indicators.
+**Action:** Always ensure high-contrast `:focus-visible` styles are explicitly defined when using custom cursors to maintain accessibility for keyboard users.
