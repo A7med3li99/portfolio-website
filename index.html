@@ -78,6 +78,14 @@ body{
 body:hover #cursor{opacity:1}
 a:hover ~ #cursor, button:hover ~ #cursor{width:20px;height:20px}
 
+/* Accessibility: explicit focus styles since custom cursor hides native feedback */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 4px;
+}
+
 /* ===========================
    BACKGROUND GRID & SCANLINES
    =========================== */
