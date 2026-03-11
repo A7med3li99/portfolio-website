@@ -1,0 +1,3 @@
+## 2023-10-27 - Custom Cursor Accessibility Constraint
+**Learning:** Using `cursor: none` to implement a custom cursor removes the browser's native focus ring feedback, making the application inaccessible to keyboard users unless explicit styles are added.
+**Action:** Always implement high-contrast `:focus-visible` styles (e.g. using a bright theme variable like `--cyan`) on all interactive elements (`a`, `button`, `[tabindex]`) whenever overriding the native cursor.
