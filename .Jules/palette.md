@@ -1,0 +1,3 @@
+## 2024-05-24 - Custom Cursor Accessibility Impact
+**Learning:** The application uses a custom cursor (`cursor: none` on `body`), which completely disables native browser cursor feedback. This architectural choice makes explicit, high-contrast `:focus-visible` styles absolutely critical for keyboard accessibility, as keyboard users otherwise have zero visual feedback when navigating interactively.
+**Action:** Always ensure that any new interactive elements (buttons, links, form fields) explicitly support the global `:focus-visible` outline or define their own high-contrast focus state using the `--cyan` theme variable.
