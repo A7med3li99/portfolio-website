@@ -48,6 +48,24 @@ body{
 }
 
 /* ===========================
+   FOCUS-VISIBLE ACCESSIBILITY
+   =========================== */
+*:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 4px;
+  border-radius: 4px; /* Slight rounding for general elements */
+}
+.btn:focus-visible, .btn-cv:focus-visible, .pbtn:focus-visible, .float-cta:focus-visible {
+  border-radius: 8px; /* Match existing button border-radius */
+}
+.soc:focus-visible, .cico:focus-visible {
+  border-radius: 9px; /* Match existing social icon border-radius */
+}
+.gallery-btn:focus-visible, .gdot:focus-visible, .sn-dot:focus-visible {
+  border-radius: 50%; /* Match existing circular elements */
+}
+
+/* ===========================
    SKIP LINK
    =========================== */
 .skip-link{
